@@ -1,0 +1,24 @@
+<h2 mat-dialog-title>
+  {{ title() }}
+</h2>
+<mat-dialog-content class="mat-dialog-content">
+  <p>
+    {{ subtitle() }}
+  </p>
+
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title-group>
+        <mat-card-title>{{ data.song }}</mat-card-title>
+        <mat-card-subtitle>{{ data.album }}</mat-card-subtitle>
+        <img mat-card-sm-image [src]="album()?.albumCover" />
+      </mat-card-title-group>
+    </mat-card-header>
+    <mat-card-content>
+      <p>Lançada em: {{ transformDate() | date : "dd/MM/yyyy" : "pt-BR" }}</p>
+    </mat-card-content>
+  </mat-card>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button mat-dialog-close>Fechar</button>
+</mat-dialog-actions>

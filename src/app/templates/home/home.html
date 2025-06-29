@@ -1,0 +1,56 @@
+<mat-drawer-container class="content">
+  <mat-drawer #side mode="side" class="side">
+    <div class="side-content">
+      <h1 class="title">Cansado do modo aleatorio?</h1>
+      <h2 class="subtitle">Escolha uma era</h2>
+      <mat-divider></mat-divider>
+      @for (theme of themesService.getThemes(); track theme) { @if (theme.id !==
+      'default') {
+      <button
+        matButton="filled"
+        class="theme-button"
+        (click)="themesService.setTheme(theme.id)"
+      >
+        {{ theme.displayName }}</button
+      >} }
+    </div>
+  </mat-drawer>
+  <div class="home-content">
+    <app-header (toggleSidebar)="side.toggle()"></app-header>
+
+    <div class="quote">
+      @if(quote() && allSongs()){
+      <p>"{{ quote()?.quote }}"</p>
+      <form class="form">
+        <div style="display: flex; gap: 50px">
+          <mat-form-field class="full-width">
+            <mat-label>Nome da música</mat-label>
+            <input matInput [formControl]="control" [matAutocomplete]="auto" />
+          </mat-form-field>
+          <button
+            matFab
+            [disabled]="!control.value"
+            (click)="confirm()"
+            aria-label="Confirmar"
+          >
+            <mat-icon>check</mat-icon>
+          </button>
+        </div>
+
+        <mat-autocomplete #auto="matAutocomplete">
+          @for (song of filteredSongs | async; track song) {
+          <mat-option [value]="song.name">{{ song.name }}</mat-option>
+          }
+        </mat-autocomplete>
+      </form>
+      }@else {
+      <mat-spinner
+        diameter="30"
+        siz
+        height="40px"
+        [strokeWidth]="2"
+      ></mat-spinner>
+      }
+    </div>
+  </div>
+</mat-drawer-container>

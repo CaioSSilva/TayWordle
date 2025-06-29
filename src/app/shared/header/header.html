@@ -1,0 +1,16 @@
+<mat-toolbar>
+  <button matButton="tonal" (click)="handleSidebar()">
+    <mat-icon style="margin: 0">menu</mat-icon>
+  </button>
+  <div class="title-container">
+    <h1 class="title">TayWordle</h1>
+    @if(themesService.currentTheme()) {
+    <h2 class="subtitle">
+      {{`${themesService.currentTheme()?.displayName} 
+      ${themesService.currentTheme()?.icon}`}}
+    </h2>
+    }@else {
+    <h2 class="subtitle">Aleatório</h2>
+    }
+  </div>
+</mat-toolbar>

@@ -1,1 +1,39 @@
-/* You can add global styles to this file, and also import other style files */
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use "@angular/material" as mat;
+@import "./app/themes/themes.css";
+
+html {
+  height: 100%;
+  color-scheme: light;
+  @include mat.theme(
+    (
+      color: mat.$orange-palette,
+      typography: Roboto,
+      density: 0,
+    )
+  );
+}
+
+body {
+  height: 100%;
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background-color: var(--mat-sys-background);
+  color: var(--mat-sys-on-background);
+}
+
+.title {
+  margin: 0;
+  text-align: center;
+  font-size: 2rem !important;
+  font-weight: bolder !important;
+  color: var(--mat-sys-primary);
+}
+.subtitle {
+  margin: 0;
+  text-align: center;
+  font-size: 1.2rem !important;
+  font-weight: normal !important;
+  color: var(--mat-sys-secondary);
+}
