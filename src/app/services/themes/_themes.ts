@@ -85,10 +85,10 @@ export const themes: Theme[] = [
     displayName: 'Midnights',
     icon: '🌙',
   },
-  {
-    id: 'tortured_poets',
-    primary: '#535353',
-    displayName: 'The Tortured Poets Department',
-    icon: '✒️',
-  },
+  // {
+  //   id: 'tortured_poets',
+  //   primary: '#535353',
+  //   displayName: 'The Tortured Poets Department',
+  //   icon: '✒️',
+  // },
 ];

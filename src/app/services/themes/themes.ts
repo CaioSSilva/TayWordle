@@ -12,7 +12,7 @@ export class ThemesService {
     return themes;
   }
 
-  setTheme(themeId: string): void {
+  setTheme(themeId: string | null): void {
     const theme = themes.find((t) => t.id === themeId);
     if (theme) {
       this.currentTheme.set(theme);

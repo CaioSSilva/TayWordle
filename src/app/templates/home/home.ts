@@ -44,7 +44,7 @@ export class Home {
   dataService = inject(DataControl);
   dialog = inject(MatDialog);
 
-  readonly theme$ = toObservable(this.themesService.currentTheme); // currentTheme é signal
+  readonly theme$ = toObservable(this.themesService.currentTheme);
   readonly modalClosed = this.dialog.afterAllClosed;
   control = new FormControl('');
 

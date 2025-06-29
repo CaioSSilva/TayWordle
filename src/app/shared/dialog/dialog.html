@@ -6,19 +6,25 @@
     {{ subtitle() }}
   </p>
 
-  <mat-card>
+  <mat-card *ngIf="album() as alb">
     <mat-card-header>
       <mat-card-title-group>
         <mat-card-title>{{ data.song }}</mat-card-title>
         <mat-card-subtitle>{{ data.album }}</mat-card-subtitle>
-        <img mat-card-sm-image [src]="album()?.albumCover" />
+        <img mat-card-sm-image [src]="alb.albumCover" />
       </mat-card-title-group>
     </mat-card-header>
     <mat-card-content>
-      <p>Lançada em: {{ transformDate() | date : "dd/MM/yyyy" : "pt-BR" }}</p>
+      <p>
+        Lançada em:
+        {{ transformDate(alb.releaseDate) | date : "dd/MM/yyyy" : "pt-BR" }}
+      </p>
     </mat-card-content>
   </mat-card>
 </mat-dialog-content>
 <mat-dialog-actions>
-  <button mat-button mat-dialog-close>Fechar</button>
+  <button matButton [mat-dialog-close]="true" cdkFocusInitial (click)="reset()">
+    <mat-icon>cached</mat-icon>
+    Jogar novamente
+  </button>
 </mat-dialog-actions>

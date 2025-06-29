@@ -1,4 +1,4 @@
-import { Component, computed, inject, Inject } from '@angular/core';
+import { Component, computed, inject } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MAT_DIALOG_DATA, MatDialogModule } from '@angular/material/dialog';
@@ -7,14 +7,24 @@ import { DataControl } from '../../services/data-control/data-control';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { CommonModule } from '@angular/common';
 import { transformDate } from '../functions';
+import { MatIcon } from '@angular/material/icon';
+import { Album } from '../model/data.model';
+import { ThemesService } from '../../services/themes/themes';
 
 @Component({
   selector: 'app-dialog',
-  imports: [MatDialogModule, MatButtonModule, MatCardModule, CommonModule],
+  imports: [
+    MatDialogModule,
+    MatButtonModule,
+    MatCardModule,
+    MatIcon,
+    CommonModule,
+  ],
   templateUrl: './dialog.html',
   styleUrl: './dialog.scss',
 })
 export class Dialog {
+  themesService = inject(ThemesService);
   data: DialogData = inject(MAT_DIALOG_DATA);
   transformedData = computed(() => {
     return this.data.album === 'Evermore'
@@ -40,7 +50,11 @@ export class Dialog {
     return this.dataControlService.getAlbumByName(album);
   }
 
-  transformDate() {
-    return transformDate(this.album()?.releaseDate!);
+  transformDate(date: Album['releaseDate']) {
+    return transformDate(date);
+  }
+
+  reset() {
+    location.reload();
   }
 }

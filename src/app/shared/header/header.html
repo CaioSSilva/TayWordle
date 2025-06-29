@@ -1,6 +1,8 @@
 <mat-toolbar>
   <button matButton="tonal" (click)="handleSidebar()">
-    <mat-icon style="margin: 0">menu</mat-icon>
+    <mat-icon style="margin: 0">{{
+      sidebar()?.opened ? "west" : "menu"
+    }}</mat-icon>
   </button>
   <div class="title-container">
     <h1 class="title">TayWordle</h1>
@@ -13,4 +15,7 @@
     <h2 class="subtitle">Aleatório</h2>
     }
   </div>
+  <button matButton="tonal" (click)="handleMode()">
+    <mat-icon style="margin: 0">sunny</mat-icon>
+  </button>
 </mat-toolbar>

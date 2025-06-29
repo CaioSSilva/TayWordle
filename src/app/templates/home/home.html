@@ -16,7 +16,7 @@
     </div>
   </mat-drawer>
   <div class="home-content">
-    <app-header (toggleSidebar)="side.toggle()"></app-header>
+    <app-header [sidebar]="side"></app-header>
 
     <div class="quote">
       @if(quote() && allSongs()){
