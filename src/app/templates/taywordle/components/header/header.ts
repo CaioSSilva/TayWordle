@@ -3,12 +3,13 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { ThemesService } from '../../services/themes/themes';
+import { ThemesService } from '../../../../services/themes/themes';
 import { MatDrawer } from '@angular/material/sidenav';
-import { LightningService } from '../../services/lightning/lightining';
-import { Tutorial } from '../../components/tutorial/tutorial';
+import { LightningService } from '../../../../services/lightning/lightining';
+import { Tutorial } from '../tutorial/tutorial';
 import { MatDialog } from '@angular/material/dialog';
-import { Content } from '../../components/tutorial/content/content';
+import { Content } from '../tutorial/content/content';
+
 @Component({
   selector: 'app-header',
   imports: [

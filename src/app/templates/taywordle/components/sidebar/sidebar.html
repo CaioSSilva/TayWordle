@@ -1,0 +1,16 @@
+<div class="side-content">
+  <h1 class="title">Cansado do modo aleatório?</h1>
+  <h2 class="subtitle">Escolha uma era</h2>
+  <mat-divider></mat-divider>
+
+  @for (theme of themesService.getThemes(); track theme) {
+    @if (theme.id !== 'default') {
+      <button
+        matButton="filled"
+        class="theme-button"
+        (click)="setTheme(theme.id)">
+        {{ theme.displayName }}
+      </button>
+    }
+  }
+</div>

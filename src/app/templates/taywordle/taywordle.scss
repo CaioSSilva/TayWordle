@@ -1,0 +1,25 @@
+@use "@angular/material" as mat;
+
+.content {
+  height: 100%;
+  justify-content: center;
+}
+
+.side {
+  padding: 25px;
+}
+
+.home-content {
+  padding: 30px;
+}
+
+.quote {
+  height: 400px;
+  display: flex;
+  gap: 20px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 1.2rem;
+}

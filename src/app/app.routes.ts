@@ -3,6 +3,12 @@ import { Routes } from '@angular/router';
 export const routes: Routes = [
   {
     path: '',
-    loadComponent: () => import('./templates/home/home').then((m) => m.Home),
+    redirectTo: 'taywordle',
+    pathMatch: 'full',
+  },
+  {
+    path: 'taywordle',
+    loadComponent: () =>
+      import('./templates/taywordle/taywordle').then((m) => m.Taywordle),
   },
 ];
