@@ -1,11 +1,11 @@
 import { effect, Injectable, signal } from '@angular/core';
 import { Theme } from '../../shared/model/shared.model';
-import { themes } from './_themes';
+import { themes } from '../../shared/themes';
 
 @Injectable({
   providedIn: 'root',
 })
-export class ThemesService {
+export class Themes {
   currentTheme = signal<Theme | null>(null);
 
   getThemes(): Theme[] {

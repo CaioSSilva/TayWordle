@@ -7,7 +7,13 @@
   </button>
   <div class="center-header-content">
     <div class="title-container">
-      <h1 class="title">TayWordle</h1>
+      <h1 class="title">
+        TayWordle
+        <mat-icon style="cursor: pointer" (click)="handleTutorial()"
+          >info</mat-icon
+        >
+      </h1>
+
       @if(themesService.currentTheme()) {
       <h2 class="subtitle">
         {{`${themesService.currentTheme()?.displayName}
@@ -17,7 +23,6 @@
       <h2 class="subtitle">Aleatório</h2>
       }
     </div>
-    <mat-icon style="cursor: pointer" (click)="handleTutorial()">info</mat-icon>
     <p id="timer"></p>
   </div>
   <button matButton="tonal" (click)="handleMode()">

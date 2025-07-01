@@ -1,4 +1,4 @@
-import { Theme } from '../../shared/model/shared.model';
+import { Theme } from '../shared/model/shared.model';
 
 export const themes: Theme[] = [
   {

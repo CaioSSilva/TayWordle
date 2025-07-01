@@ -2,17 +2,6 @@
   <mat-drawer #side mode="side" class="side">
     <app-sidebar></app-sidebar>
   </mat-drawer>
-
-  <div class="home-content">
-    <app-header [sidebar]="side"></app-header>
-
-    <div class="quote">
-      @if(quote() && allSongs()){
-        <app-quote></app-quote>
-        <app-guess-form></app-guess-form>
-      } @else {
-        <mat-spinner diameter="30" [strokeWidth]="2"></mat-spinner>
-      }
-    </div>
-  </div>
+  <app-header [sidebar]="side"></app-header>
+  <div class="home-content"></div>
 </mat-drawer-container>

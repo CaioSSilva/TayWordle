@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
-import { MatButtonModule } from '@angular/material/button';
-import { MatDialogModule } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-content',
-  imports: [MatDialogModule, MatButtonModule],
+  imports: [],
   templateUrl: './content.html',
-  styleUrl: './content.scss',
+  styleUrl: './content.scss'
 })
-export class Content {}
+export class Content {
+
+}

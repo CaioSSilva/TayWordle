@@ -3,7 +3,7 @@ import { Injectable, Renderer2, RendererFactory2 } from '@angular/core';
 @Injectable({
   providedIn: 'root',
 })
-export class LightningService {
+export class Lightning {
   private renderer: Renderer2;
   private currentTheme: 'light' | 'dark' = 'light'; // Tema padrão
 

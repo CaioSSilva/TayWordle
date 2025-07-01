@@ -1,30 +1,23 @@
-import { Component, inject, input, OnInit } from '@angular/core';
-import { MatButtonModule } from '@angular/material/button';
-import { MatIconModule } from '@angular/material/icon';
-import { MatMenuModule } from '@angular/material/menu';
+import { Component, inject, input } from '@angular/core';
+import { MatIcon } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { ThemesService } from '../../../../services/themes/themes';
+import { Themes } from '../../../../services/themes/themes';
 import { MatDrawer } from '@angular/material/sidenav';
-import { LightningService } from '../../../../services/lightning/lightining';
-import { Tutorial } from '../tutorial/tutorial';
 import { MatDialog } from '@angular/material/dialog';
+import { Lightning } from '../../../../services/themes/lightning';
 import { Content } from '../tutorial/content/content';
+import { Tutorial } from '../tutorial/tutorial';
+import { MatButton } from '@angular/material/button';
 
 @Component({
   selector: 'app-header',
-  imports: [
-    MatToolbarModule,
-    MatIconModule,
-    MatButtonModule,
-    MatMenuModule,
-    Tutorial,
-  ],
+  imports: [MatToolbarModule, MatIcon, Tutorial, MatButton],
   templateUrl: './header.html',
   styleUrl: './header.scss',
 })
 export class Header {
-  themesService = inject(ThemesService);
-  lightningService = inject(LightningService);
+  themesService = inject(Themes);
+  lightningService = inject(Lightning);
   sidebar = input<MatDrawer>();
   tutorial!: MatDialog;
 
