@@ -1,7 +1,8 @@
 <mat-drawer-container class="content">
   <mat-drawer #side mode="side" class="side">
-    <app-sidebar></app-sidebar>
+    <app-sidebar [sidebar]="side"></app-sidebar>
   </mat-drawer>
   <app-header [sidebar]="side"></app-header>
+  <app-status></app-status>
   <div class="home-content"></div>
 </mat-drawer-container>

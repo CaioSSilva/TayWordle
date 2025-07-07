@@ -1,0 +1,15 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  align-items: center;
+  justify-content: center;
+}
+.lifes {
+  margin: 10px 0px;
+  display: flex;
+  gap: 10px;
+}
+.icon {
+  color: var(--mat-sys-primary);
+}

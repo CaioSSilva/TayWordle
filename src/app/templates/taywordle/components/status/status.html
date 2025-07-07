@@ -1,0 +1,23 @@
+<div class="container">
+  <mat-card appearance="outlined">
+    <mat-card-header>
+      <mat-card-title class="subtitle">Estatísticas</mat-card-title>
+      <mat-card-subtitle>
+        <div class="lifes">
+          <span class="subtitle">Vidas:</span>
+          @for(life of lifes(); track life) { @if(themesService.currentTheme())
+          {
+          <h2 class="subtitle">
+            {{`${themesService.currentTheme()?.icon}`}}
+          </h2>
+          }@else {
+          <mat-icon class="subtitle">favorite</mat-icon>
+          } }
+        </div>
+      </mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <span class="subtitle">Tempo: <span #timer> 00:00 </span> </span>
+    </mat-card-content>
+  </mat-card>
+</div>

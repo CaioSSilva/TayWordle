@@ -1,25 +1,50 @@
-import { Component, inject, input } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  inject,
+  input,
+  OnInit,
+  viewChild,
+} from '@angular/core';
 import { MatIcon } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { Themes } from '../../../../services/themes/themes';
 import { MatDrawer } from '@angular/material/sidenav';
-import { MatDialog } from '@angular/material/dialog';
 import { Lightning } from '../../../../services/themes/lightning';
-import { Content } from '../tutorial/content/content';
-import { Tutorial } from '../tutorial/tutorial';
 import { MatButton } from '@angular/material/button';
+import { Dialog } from '../../../../services/dialog';
+import {
+  TutorialTaywordle,
+  TutorialConfig,
+} from '../dialogs/tutorial-taywordle';
+import { Timer } from '../../../../services/timer';
 
 @Component({
   selector: 'app-header',
-  imports: [MatToolbarModule, MatIcon, Tutorial, MatButton],
+  imports: [MatToolbarModule, MatIcon, MatButton],
   templateUrl: './header.html',
   styleUrl: './header.scss',
 })
-export class Header {
+export class Header implements AfterViewInit {
   themesService = inject(Themes);
   lightningService = inject(Lightning);
+  dialogService = inject(Dialog);
+  timerService = inject(Timer);
   sidebar = input<MatDrawer>();
-  tutorial!: MatDialog;
+
+  ngAfterViewInit(): void {
+    this.timerService.pauseTimer();
+    this.checkTutorial();
+  }
+
+  checkTutorial() {
+    const show = window.localStorage.getItem('showTutorial');
+    if (!show) {
+      this.openTutorial();
+    }
+    window.localStorage.setItem('showTutorial', 'false');
+  }
 
   handleSidebar() {
     this.sidebar()?.toggle();
@@ -29,18 +54,7 @@ export class Header {
     this.lightningService.toggleTheme();
   }
 
-  openTutorial(dialog: MatDialog) {
-    this.tutorial = dialog;
-  }
-
-  handleTutorial() {
-    this.tutorial.open(Content, {
-      height: `${window.innerHeight * 0.3}px`,
-      width: `${window.innerWidth * 0.6}px`,
-      maxWidth: `${window.innerHeight}px`,
-      position: {
-        top: '100px',
-      },
-    });
+  openTutorial() {
+    this.dialogService.openDialog(TutorialTaywordle, TutorialConfig);
   }
 }

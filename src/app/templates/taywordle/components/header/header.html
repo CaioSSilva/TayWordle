@@ -1,4 +1,3 @@
-<app-tutorial (dialog)="openTutorial($event)"></app-tutorial>
 <mat-toolbar>
   <button matButton="tonal" (click)="handleSidebar()">
     <mat-icon style="margin: 0">{{
@@ -9,21 +8,19 @@
     <div class="title-container">
       <h1 class="title">
         TayWordle
-        <mat-icon style="cursor: pointer" (click)="handleTutorial()"
+        <mat-icon style="cursor: pointer" (click)="openTutorial()"
           >info</mat-icon
         >
       </h1>
 
       @if(themesService.currentTheme()) {
       <h2 class="subtitle">
-        {{`${themesService.currentTheme()?.displayName}
-        ${themesService.currentTheme()?.icon}`}}
+        {{`${themesService.currentTheme()?.displayName}`}}
       </h2>
       }@else {
       <h2 class="subtitle">Aleatório</h2>
       }
     </div>
-    <p id="timer"></p>
   </div>
   <button matButton="tonal" (click)="handleMode()">
     <mat-icon style="margin: 0">sunny</mat-icon>
