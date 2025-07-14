@@ -17,7 +17,15 @@
       </mat-card-subtitle>
     </mat-card-header>
     <mat-card-content>
-      <span class="subtitle">Tempo: <span #timer> 00:00 </span> </span>
+      <span class="subtitle"
+        >Tempo:
+        <countdown
+          [config]="{
+            format: 'mm:ss'
+          }"
+          #countdown
+        ></countdown
+      ></span>
     </mat-card-content>
   </mat-card>
 </div>

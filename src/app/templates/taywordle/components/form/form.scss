@@ -1,0 +1,24 @@
+.form {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.form-content {
+  display: flex;
+  gap: 1rem;
+}
+
+.quote {
+  text-align: center;
+  max-width: 500px;
+  font-size: 1.2rem;
+}
+
+.input {
+  width: 100%;
+}

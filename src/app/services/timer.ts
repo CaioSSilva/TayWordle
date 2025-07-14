@@ -1,49 +1,46 @@
-import { ElementRef, Injectable } from '@angular/core';
-import { signal } from '@angular/core';
+import { Injectable, signal } from '@angular/core';
+import { CountdownComponent } from 'ngx-countdown';
 
 @Injectable({
   providedIn: 'root',
 })
 export class Timer {
-  private intervalId: any = null;
-  private seconds = signal(0);
-  private timerElement: any = null;
-  private isPaused = signal(false);
+  public count: CountdownComponent | null = null;
+  time = signal<number>(0);
+  stopOn = signal<number>(0);
+  onDemand = signal<boolean>(true);
+  format = signal<string>('mm:ss');
 
-  initTimer(timer: ElementRef, time: number) {
-    this.timerElement = timer.nativeElement;
-    this.seconds.set(time);
-    this.isPaused.set(false);
+  config = {
+    format: this.format(),
+    demand: this.onDemand(),
+    stopTime: this.stopOn(),
+  };
 
-    const formatTime = (secs: number) => {
-      const mins = Math.floor(secs / 60);
-      const secsLeft = secs % 60;
-      return `${mins.toString().padStart(2, '0')}:${secsLeft
-        .toString()
-        .padStart(2, '0')}`;
-    };
+  setTimer(timer: CountdownComponent): void {
+    this.count = timer;
 
-    this.timerElement.innerHTML = `${formatTime(this.seconds())}`;
-
-    this.intervalId = setInterval(() => {
-      if (!this.isPaused()) {
-        if (this.seconds() <= 0) {
-          clearInterval(this.intervalId);
-          this.timerElement.innerHTML = '00:00';
-          this.timerElement.style.color = 'red';
-        } else {
-          this.timerElement.innerHTML = `${formatTime(this.seconds())}`;
-          this.seconds.set(this.seconds() - 1);
-        }
-      }
-    }, 1000);
+    if (this.count) {
+      this.count.config = this.config;
+    }
   }
 
-  pauseTimer() {
-    this.isPaused.set(true);
+  setTime(seconds: number): void {
+    if (this.count) {
+      this.count.config.leftTime = seconds;
+      this.count.restart();
+    }
   }
 
-  resumeTimer() {
-    this.isPaused.set(false);
+  begginTimer(): void {
+    if (this.count) {
+      this.count.begin();
+    }
+  }
+
+  restartTimer(): void {
+    if (this.count) {
+      this.count.restart();
+    }
   }
 }

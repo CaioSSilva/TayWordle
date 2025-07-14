@@ -2,7 +2,7 @@
   <h1 class="title">Cansado do modo aleatorio?</h1>
   <h2 class="subtitle">Escolha uma era</h2>
   <mat-divider></mat-divider>
-  @for(theme of themesService.getThemes(); track theme){ @if(theme.id !==
+  @for(theme of themesService.getThemes(); track theme.id){ @if(theme.id !==
   'default'){
   <button
     matButton="filled"

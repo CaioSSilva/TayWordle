@@ -2,7 +2,6 @@ import { Component, inject } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
-import { Timer } from '../../../../services/timer';
 
 @Component({
   selector: 'tutorial',
@@ -32,17 +31,12 @@ import { Timer } from '../../../../services/timer';
       </h3>
     </mat-dialog-content>
     <mat-dialog-actions>
-      <button matButton mat-dialog-close (click)="resume()">Fechar</button>
+      <button matButton mat-dialog-close>Fechar</button>
     </mat-dialog-actions>
   `,
   imports: [MatDialogModule, MatButtonModule, MatIconModule],
 })
-export class TutorialTaywordle {
-  timer = inject(Timer);
-  resume() {
-    this.timer.resumeTimer();
-  }
-}
+export class TutorialTaywordle {}
 
 export const TutorialConfig = {
   height: `400px`,
@@ -50,4 +44,5 @@ export const TutorialConfig = {
   position: {
     top: '100px',
   },
+  id: 'taywordle-tutorial',
 };

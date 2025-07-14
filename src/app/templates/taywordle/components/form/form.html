@@ -1,0 +1,45 @@
+<form class="form">
+  @if(quote() && allSongs() && isRunning()) {
+  <p class="quote">"{{ quote()?.quote }}"</p>
+  <div class="form-content">
+    <mat-form-field class="input">
+      <mat-label>Musíca</mat-label>
+      <input
+        type="text"
+        placeholder="Escolha uma música"
+        matInput
+        [formControl]="control"
+        [matAutocomplete]="auto"
+      />
+      <mat-autocomplete #auto="matAutocomplete">
+        @for (song of filteredSongs | async; track song.name) {
+        <mat-option [value]="song.name">{{ song.name }}</mat-option>
+        }
+      </mat-autocomplete>
+    </mat-form-field>
+    <button
+      matFab
+      [disabled]="!control.value"
+      (click)="confirm()"
+      aria-label="Confirmar"
+    >
+      <mat-icon>check</mat-icon>
+    </button>
+  </div>
+
+  } @if( !isRunning()) {<button
+    style="margin: 0 auto"
+    matFab
+    [disabled]="!quote() || !allSongs()"
+    (click)="start()"
+    aria-label="Começar"
+  >
+    <ng-container *ngIf="!quote() || !allSongs(); else playIcon">
+      <mat-spinner diameter="25"></mat-spinner>
+    </ng-container>
+    <ng-template #playIcon>
+      <mat-icon>play_arrow</mat-icon>
+    </ng-template>
+  </button>
+  }
+</form>
